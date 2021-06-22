@@ -33,6 +33,24 @@ loadSprite('blue-steel', 'gqVoI2b.png')
 loadSprite('blue-evil-shroom', 'SvV4ueD.png')
 loadSprite('blue-suprise', 'RMqCc1G.png')
 
+scene("open", () => {
+
+    layers([
+        "bg",
+        "obj",
+        "ui",
+    ], "obj");  
+
+    const texto = add ([
+        text("Bem Vindo ao Super-Mario.js \n Esse jogo foi feito com a biblioteca \n kaboom.js pelo desenvolvedor Ebano Assumpcao.\n\n Divirta-se \n \n Aperte g para continuar", 20), origin('center'), pos(width()/2, height()/2),
+        layer("ui"),
+      //  add([text(score, 32), origin('center'), pos(width()/2, height()/2)])
+    ]) 
+    keyPress("g", () => {
+        go ("game", { level: 0, score: 0})
+    })
+})
+
 scene("game", ({ level, score }) => {
     layers(['bg', 'obj', 'ui'], 'obj')
 
@@ -220,4 +238,5 @@ scene('lose', ({ score }) => {
     add([text(score, 32), origin('center'), pos(width()/2, height()/2)])
 })
 
-start("game", { level: 0, score: 0})
+// start("game", { level: 0, score: 0})
+start("open")
